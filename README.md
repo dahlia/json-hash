@@ -3,7 +3,9 @@
 JSON Hash
 =========
 
+[![Latest version][Tag badge]][Deno module]
 [![LGPL 3.0][License badge]](./LICENSE)
+[![Deno Doc (API references)][Deno Doc badge]][Deno Doc]
 [![GitHub Actions][GitHub Actions status badge]][GitHub Actions]
 
 This package contains the following JSON utilties for [Deno]:
@@ -25,7 +27,13 @@ This package contains the following JSON utilties for [Deno]:
 
  -  [*mod.ts*](./mod.ts) re-exports everything in the above files.
 
+See also [Deno Doc] for the complete API references.
+
+[Tag badge]: https://img.shields.io/github/v/tag/dahlia/json-hash
+[Deno module]: https://deno.land/x/json_hash
 [License badge]: https://img.shields.io/github/license/dahlia/json-hash
+[Deno Doc]: https://doc.deno.land/https://deno.land/x/json_hash/mod.ts
+[Deno Doc badge]: https://img.shields.io/badge/api-deno%20doc-blue
 [GitHub Actions]: https://github.com/dahlia/json-hash/actions/workflows/test.yaml
 [GitHub Actions status badge]: https://github.com/dahlia/json-hash/actions/workflows/test.yaml/badge.svg
 [Deno]: https://deno.land/
