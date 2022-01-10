@@ -12,6 +12,10 @@ This package contains the following JSON utilties for [Deno]:
     are encoded.  It also provides various hash algorithms; see also the [docs
     of Deno's std/crupto module][std/crypto].
 
+ -  [*merkle.ts*](./merkle.ts) provides hash digests of JSON [Merkle tree]s.
+    It can be used for efficient diff of two large trees or updating a deep
+    leaf in a large tree.
+
  -  [*canon.ts*](./canon.ts) provides canonicalization of JSON trees.
     This complies with [RFC 8785], also known as JCS (JSON Canonicalization
     Scheme).
@@ -20,6 +24,7 @@ This package contains the following JSON utilties for [Deno]:
 
 [Deno]: https://deno.land/
 [std/crypto]: https://deno.land/std@0.120.0/crypto#supported-algorithms
+[Merkle tree]: https://en.wikipedia.org/wiki/Merkle_tree
 [RFC 8785]: https://tools.ietf.org/html/rfc8785
 
 
