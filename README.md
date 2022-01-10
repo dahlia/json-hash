@@ -3,6 +3,9 @@
 JSON Hash
 =========
 
+[![LGPL 3.0][License badge]](./LICENSE)
+[![GitHub Actions][GitHub Actions status badge]][GitHub Actions]
+
 This package contains the following JSON utilties for [Deno]:
 
  -  [*digest.ts*](./digest.ts) provides cryptographic hash digests of
@@ -22,6 +25,9 @@ This package contains the following JSON utilties for [Deno]:
 
  -  [*mod.ts*](./mod.ts) re-exports everything in the above files.
 
+[License badge]: https://img.shields.io/github/license/dahlia/json-hash
+[GitHub Actions]: https://github.com/dahlia/json-hash/actions/workflows/test.yaml
+[GitHub Actions status badge]: https://github.com/dahlia/json-hash/actions/workflows/test.yaml/badge.svg
 [Deno]: https://deno.land/
 [std/crypto]: https://deno.land/std@0.120.0/crypto#supported-algorithms
 [Merkle tree]: https://en.wikipedia.org/wiki/Merkle_tree

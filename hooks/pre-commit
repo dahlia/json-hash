@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+deno lint --ignore=jcs_spec/,.vscode/
+deno fmt --check --ignore=jcs_spec/,.vscode/

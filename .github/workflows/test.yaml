@@ -1,0 +1,26 @@
+name: test
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+      - run: >-
+          deno test
+          --allow-read=jcs_spec/testdata/
+          --doc
+          --ignore=jcs_spec/
+  lint:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+      - run: hooks/pre-commit
