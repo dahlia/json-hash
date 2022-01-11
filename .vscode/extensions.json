@@ -1,5 +1,5 @@
 {
   "recommendations": [
-   "denoland.vscode-deno",
+    "denoland.vscode-deno",
   ],
 }

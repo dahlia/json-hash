@@ -1,0 +1,21 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{json,sh,ts,yaml,yml}]
+indent_style = space
+indent_size = 2
+max_line_length = 80
+
+[hooks/bin/**]
+charset = unset
+end_of_line = unset
+trim_trailing_whitespace = unset
+indent_style = unset
+indent_size = unset
+insert_final_newline = unset
+max_line_length = unset

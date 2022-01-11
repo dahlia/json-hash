@@ -141,6 +141,7 @@ export class MerkleHash<T extends DigestAlgorithmType> {
 
 const utf8Encoder = new TextEncoder();
 
+// editorconfig-checker-disable
 /**
  * Derives a {@link MerkleHash} from input data.
  *
@@ -201,6 +202,7 @@ const utf8Encoder = new TextEncoder();
  * @param tree The input JSON data.
  * @returns The merkle root hash of the given JSON tree.
  */
+// editorconfig-checker-enable
 export async function merkle<T extends DigestAlgorithmType>(
   algorithm: T & DigestAlgorithmType,
   tree: MerkleTree<T>,

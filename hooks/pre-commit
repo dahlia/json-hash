@@ -1,4 +1,5 @@
 #!/bin/bash
 set -e
+"$(dirname "$0")/ec.sh" -config .editorconfig
 deno lint --ignore=jcs_spec/,.vscode/
 deno fmt --check --ignore=jcs_spec/,.vscode/

@@ -20,7 +20,7 @@ function doubleBE(hex: string): number {
   return view.getFloat64(0, false);
 }
 
-// https://tools.ietf.org/id/draft-rundgren-json-canonicalization-scheme-00.html#rfc.section.3.2.2.3
+// https://tools.ietf.org/id/draft-rundgren-json-canonicalization-scheme-00.html#rfc.section.3.2.2.3  // editorconfig-checker-disable-line
 Deno.test("canonicalize(number)", () => {
   assertEquals(
     canonicalize(doubleBE("4340000000000001")),
