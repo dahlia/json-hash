@@ -1,3 +1,12 @@
+/**
+ * This module provides cryptographic hash digests of JSON trees.
+ * It guarantee that `digest()` function always returns the same digest
+ * for the equivalent JSON trees.  It means you don't have to care about
+ * the order of how object keys occurs or how characters in string are encoded.
+ * It also provides various hash algorithms; see also the docs of Deno's
+ * std/crypto module.
+ * @license LGPL-3.0-or-later
+ */
 import { crypto, DigestAlgorithmType } from "./crypto.ts";
 import { canonicalize, Tree } from "./canon.ts";
 

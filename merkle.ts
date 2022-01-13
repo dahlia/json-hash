@@ -1,3 +1,8 @@
+/**
+ * This module provides hash digests of JSON Merkle trees.  It can be used for
+ * efficient diff of two large trees or updating a deep leaf in a large tree.
+ * @license LGPL-3.0-or-later
+ */
 import * as ascii85 from "https://deno.land/std@0.120.0/encoding/ascii85.ts";
 import { Tree } from "./canon.ts";
 import { crypto, type DigestAlgorithmType } from "./crypto.ts";

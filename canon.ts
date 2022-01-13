@@ -1,4 +1,10 @@
 /**
+ * This module provides canonicalization of JSON trees.  This complies with
+ * RFC 8785, also known as JCS (JSON Canonicalization Scheme).
+ * @license LGPL-3.0-or-later
+ */
+
+/**
  * Represents a JSON tree.
  */
 export type Tree =
