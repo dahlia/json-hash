@@ -25,8 +25,8 @@ cryoptography.  See the below sections for details.
 [1]: https://github.com/dahlia/json-hash/issues/2
 
 
-[*canon.ts*][canon.ts]
-----------------------
+[*canon.ts*][canon.ts]: JSON normalizer compliant with JSC
+----------------------------------------------------------
 
 Cryptographic operations like hashing and signing need the data to be
 expressed in an invariant format so that the operations are reliably
@@ -73,8 +73,8 @@ assertEquals(
 [RFC 8785]: https://tools.ietf.org/html/rfc8785
 
 
-[*digest.ts*][digest.ts]
-------------------------
+[*digest.ts*][digest.ts]: Hasing JSON entities
+----------------------------------------------
 
 This module is a thing wrapper around the above `canonicalize()` function and
 the curated collection of cryptographic hash algorithms:
@@ -104,21 +104,68 @@ algorithms than Web Crypto API.
 [std/crypto]: https://deno.land/std@0.120.0/crypto#supported-algorithms
 
 
-[*merkle.ts*][merkle.ts]
-------------------------
+[*merkle.ts*][merkle.ts]: Dealing JSON with Merkle tree
+-------------------------------------------------------
 
-This module provides hash digests of JSON [Merkle tree]s.
-It can be used for efficient diff of two large trees or updating a deep
-leaf in a large tree.
+If you need to track changes of large JSON trees this module could help you.
+It provides `merkle()` function and `MerkleHash<T>` class which enables you to
+build [Merkle tree]s.
+
+Unlikes `digest()` function from *digest.ts* module, `merkle()` function doesn't
+digest the entire JSON data at once, but digests each small entity of the tree
+and digests them recursively.  For example:
+
+~~~ typescript
+import { MerkleHash, merkle } from "https://deno.land/x/json_hash/merkle.ts";
+import { assert } from "https://deno.land/std/testing/asserts.ts";
+
+const a: MerkleHash<"BLAKE3"> = await merkle("BLAKE3", [1, 2, 3]);
+const b: MerkleHash<"BLAKE3"> = await merkle("BLAKE3", [
+  await merkle("BLAKE3", 1),
+  await merkle("BLAKE3", 2),
+  await merkle("BLAKE3", 3),
+]);
+assert(a.equals(b));
+
+const c: MerkleHash<"BLAKE3"> = await merkle(
+  "BLAKE3",
+  { foo: "bar", baz: [1, 2, 3] }
+);
+const d: MerkleHash<"BLAKE3"> = await merkle(
+  "BLAKE3",
+  { foo: await merkle("BLAKE3", "bar"), baz: a }
+);
+assert(c.equals(d));
+
+const e = await merkle(c);
+assert(e.equals(c));
+~~~
+
+Note that `merkle()` returns `MerkleHash<T>` (instead of `Uint8Array`),
+and also takes a JSON tree mixed with `MerkleHash<T>` values.  In this module,
+such mixed trees are called `MerkleTree<T>`.[^2]  The `merkle()` function
+behaves like below:
+
+ -  `merkle()` derives `MerkleHash<T>` from `MerkleTree<T>`.
+ -  `merkle()` makes no distinction between a `MerkleTree<T>` and
+    `MerkleHash<T>` derived from the same tree.
+
+In other words, the idea this module implements is very simple: hierarchical
+hash verification of JSON trees.  If you still don't get it well I recommend
+you to read *[Diving into Merkle Trees]* by Pedro Tavares.
+
+[^2]: It is a compiled-time abstract type, and the type parameter `T` represents
+      the hash algorithm, which corresponds to `MerkleHash<T>`'s type parameter.
 
 [merkle.ts]: https://doc.deno.land/https://deno.land/x/json_hash/digest.ts
 [Merkle tree]: https://en.wikipedia.org/wiki/Merkle_tree
+[Diving into Merkle Trees]: https://ordep.dev/posts/diving-into-merkle-trees
 
 
-[*mod.ts*][Deno doc]
---------------------
+[*mod.ts*][Deno doc]: Façade
+----------------------------
 
-This façade module re-exports everything in the above files.
+This module re-exports everything in the above files.
 
 See also [Deno Doc] for the complete API references.
 
