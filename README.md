@@ -76,7 +76,7 @@ assertEquals(
 [*digest.ts*][digest.ts]: Hashing JSON entities
 -----------------------------------------------
 
-This module is a thing wrapper around the above `canonicalize()` function and
+This module is a thin wrapper around the above `canonicalize()` function and
 the curated collection of cryptographic hash algorithms:
 
 ~~~~ typescript
