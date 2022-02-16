@@ -25,7 +25,7 @@ cryoptography.  See the below sections for details.
 [1]: https://github.com/dahlia/json-hash/issues/2
 
 
-[*canon.ts*][canon.ts]: JSON normalizer compliant with JSC
+[*canon.ts*][canon.ts]: JSON normalizer compliant with JCS
 ----------------------------------------------------------
 
 Cryptographic operations like hashing and signing need the data to be
@@ -44,8 +44,8 @@ For example, the following representations all encodes the same JSON entity:
 ~~~~
 
 In order to hash or sign JSON data, they should be normalized first.
-That's why JSON Canonicalization Scheme (JSC) was proposed in [RFC 8785].
-JSC allows only a single representation for each possible JSON entity.
+That's why JSON Canonicalization Scheme (JCS) was proposed in [RFC 8785].
+JCS allows only a single representation for each possible JSON entity.
 For example, the JSON entity the above multiple representations encode can
 be represented into only the below single form:
 
@@ -53,7 +53,7 @@ be represented into only the below single form:
 {"baz":[1,2,3],"foo":"bar"}
 ~~~
 
-The [*canon.ts*][canon.ts] module implements JSC, which completely complies
+The [*canon.ts*][canon.ts] module implements JCS, which completely complies
 with [RFC 8785].  Here's some example:
 
 ~~~ typescript
