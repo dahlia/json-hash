@@ -73,8 +73,8 @@ assertEquals(
 [RFC 8785]: https://tools.ietf.org/html/rfc8785
 
 
-[*digest.ts*][digest.ts]: Hasing JSON entities
-----------------------------------------------
+[*digest.ts*][digest.ts]: Hashing JSON entities
+-----------------------------------------------
 
 This module is a thing wrapper around the above `canonicalize()` function and
 the curated collection of cryptographic hash algorithms:
