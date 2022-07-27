@@ -73,7 +73,11 @@ export class MerkleHash<T extends DigestAlgorithmType> {
     data: BufferSource | AsyncIterable<BufferSource> | Iterable<BufferSource>,
   ): Promise<MerkleHash<T>> {
     const digest = await crypto.subtle.digest(algorithm, data);
-    return new MerkleHash(algorithm, digest);
+    return new MerkleHash(
+      algorithm,
+      digest,
+      MerkleHash.#MoveFromInternalBuffer,
+    );
   }
 
   /**
@@ -86,7 +90,12 @@ export class MerkleHash<T extends DigestAlgorithmType> {
     algorithm: T & DigestAlgorithmType,
     hex: string,
   ): MerkleHash<T> {
-    return new MerkleHash(algorithm, fromHex(hex));
+    const bytes = fromHex(hex);
+    return new MerkleHash(
+      algorithm,
+      bytes.buffer,
+      MerkleHash.#MoveFromInternalBuffer,
+    );
   }
 
   /**
