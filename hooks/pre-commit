@@ -1,5 +1,9 @@
 #!/bin/bash
 set -e
 "$(dirname "$0")/ec.sh" -config .editorconfig
+deno check ./*.ts
+if [[ "$CI" != true ]]; then
+  deno test --allow-read=jcs_spec/ --doc --ignore=jcs_spec/
+fi
 deno lint --ignore=jcs_spec/,.vscode/
 deno fmt --check --ignore=jcs_spec/,.vscode/

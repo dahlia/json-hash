@@ -8,7 +8,7 @@
  * @license LGPL-3.0-or-later
  */
 import { crypto, type DigestAlgorithmType } from "./crypto.ts";
-import { canonicalize, Tree } from "./canon.ts";
+import { canonicalize, type Tree } from "./canon.ts";
 
 /**
  * Digests a tree using the specified hash algorithm.
