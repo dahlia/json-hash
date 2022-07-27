@@ -229,6 +229,30 @@ Deno.test("MerkleHash#equals()", () => {
   assert(!d.equals(c as unknown as MerkleHash<"SHA-256">));
 });
 
+Deno.test("MerkleHash#compareTo()", () => {
+  const a = MerkleHash.fromHex(
+    "SHA-256",
+    "a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a",
+  );
+  const b = MerkleHash.fromHex(
+    "SHA-256",
+    "a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434b",
+  );
+  const c = MerkleHash.fromHex(
+    "SHA-256",
+    "a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8435a",
+  );
+  assertEquals(a.compareTo(a), 0);
+  assert(a.compareTo(b) < 0);
+  assert(a.compareTo(c) < 0);
+  assert(b.compareTo(a) > 0);
+  assertEquals(b.compareTo(b), 0);
+  assert(b.compareTo(c) < 0);
+  assert(c.compareTo(a) > 0);
+  assert(c.compareTo(b) > 0);
+  assertEquals(c.compareTo(c), 0);
+});
+
 Deno.test("MerkleHash#toUint8Array()", () => {
   const initData = fromHex("d41d8cd98f00b204e9800998ecf8427e");
   const hash = new MerkleHash("MD5", initData);

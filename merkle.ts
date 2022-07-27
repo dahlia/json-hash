@@ -107,7 +107,7 @@ export class MerkleHash<T extends DigestAlgorithmType> {
   }
 
   /**
-   * Compares two {@link MerkleHash} objects.
+   * Checks if two {@link MerkleHash} objects are equal.
    * @param other The other {@link MerkleHash} to compare.
    * @returns `true` if the hashes are equal, `false` otherwise.
    */
@@ -121,6 +121,38 @@ export class MerkleHash<T extends DigestAlgorithmType> {
       if (thisBuffer.at(i) !== otherBuffer.at(i)) return false;
     }
     return true;
+  }
+
+  /**
+   * Compares two {@link MerkleHash} objects.  The comparison is done by
+   * comparing the hashes in byte order, that is, it's lexicographic.
+   * @param other The other {@link MerkleHash} to compare.
+   * @returns `-1` if this hash goes before the other hash, `0` if they are
+   *          equal, and `1` if this hash goes after the other hash.
+   * @throws {TypeError} Thrown if the other hash is a different kind of
+   *                     {@link MerkleHash}; for example, different hash
+   *                     algorithms.
+   */
+  compareTo(other: MerkleHash<T>): number {
+    if (this.algorithm !== other.algorithm) {
+      throw new TypeError(
+        `Cannot compare merkle hashes with different algorithms.`,
+      );
+    }
+    const thisBuffer = this.#hashBuffer;
+    const otherBuffer = other.#hashBuffer;
+    const length = thisBuffer.length;
+    if (length !== otherBuffer.length) {
+      throw new TypeError(
+        `Cannot compare merkle hashes with different sizes.`,
+      );
+    }
+    for (let i = 0; i < length; i++) {
+      const a = thisBuffer.at(i);
+      const b = otherBuffer.at(i);
+      if (a !== b) return a! - b!;
+    }
+    return 0;
   }
 
   /**
