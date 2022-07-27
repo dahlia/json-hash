@@ -134,10 +134,8 @@ export class MerkleHash<T extends DigestAlgorithmType> {
    *                     algorithms.
    */
   compareTo(other: MerkleHash<T>): number {
-    if (this.algorithm !== other.algorithm) {
-      throw new TypeError(
-        `Cannot compare merkle hashes with different algorithms.`,
-      );
+    if (!(other instanceof MerkleHash)) {
+      throw new TypeError("Expected a merkle hash.");
     }
     const thisBuffer = this.#hashBuffer;
     const otherBuffer = other.#hashBuffer;
@@ -145,6 +143,10 @@ export class MerkleHash<T extends DigestAlgorithmType> {
     if (length !== otherBuffer.length) {
       throw new TypeError(
         `Cannot compare merkle hashes with different sizes.`,
+      );
+    } else if (this.algorithm !== other.algorithm) {
+      throw new TypeError(
+        `Cannot compare merkle hashes with different algorithms.`,
       );
     }
     for (let i = 0; i < length; i++) {

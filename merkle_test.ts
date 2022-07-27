@@ -2,6 +2,7 @@ import {
   assert,
   assertEquals,
   assertNotEquals,
+  assertThrows,
 } from "https://deno.land/std@0.120.0/testing/asserts.ts";
 import { fromHex } from "./hex.ts";
 import {
@@ -251,6 +252,25 @@ Deno.test("MerkleHash#compareTo()", () => {
   assert(c.compareTo(a) > 0);
   assert(c.compareTo(b) > 0);
   assertEquals(c.compareTo(c), 0);
+
+  assertThrows<TypeError>(() => a.compareTo(null!));
+  assertThrows<TypeError>(
+    () => a.compareTo({} as unknown as MerkleHash<"SHA-256">),
+  );
+  const sha1MerkleHash = MerkleHash.fromHex(
+    "SHA-1",
+    "adc83b19e793491b1c6ea0fd8b46cd9f32e592fc",
+  );
+  assertThrows<TypeError>(
+    () => a.compareTo(sha1MerkleHash as unknown as MerkleHash<"SHA-256">),
+  );
+  const sha3_256MerkleHash = MerkleHash.fromHex(
+    "SHA3-256",
+    "cc7fd2d0b9381e25d5f1394227a8a4df0f82d374567632ddae402323ac71427b",
+  );
+  assertThrows<TypeError>(
+    () => a.compareTo(sha3_256MerkleHash as unknown as MerkleHash<"SHA-256">),
+  );
 });
 
 Deno.test("MerkleHash#toUint8Array()", () => {
