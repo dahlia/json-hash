@@ -112,7 +112,9 @@ export class MerkleHash<T extends DigestAlgorithmType> {
    * @returns `true` if the hashes are equal, `false` otherwise.
    */
   equals(other: MerkleHash<T>): boolean {
-    if (this.algorithm !== other.algorithm) return false;
+    if (!(other instanceof MerkleHash) || this.algorithm !== other.algorithm) {
+      return false;
+    }
     const thisBuffer = this.#hashBuffer;
     const otherBuffer = other.#hashBuffer;
     const length = thisBuffer.length;

@@ -228,6 +228,9 @@ Deno.test("MerkleHash#equals()", () => {
   assert(!d.equals(a));
   assert(!d.equals(b));
   assert(!d.equals(c as unknown as MerkleHash<"SHA-256">));
+
+  assert(!a.equals(null!));
+  assert(!a.equals({} as unknown as MerkleHash<"SHA-256">));
 });
 
 Deno.test("MerkleHash#compareTo()", () => {
