@@ -9,6 +9,8 @@ Version 0.2.0
 To be released.
 
  -  Added `MerkleHash#compareTo()` method.  [[#4]]
+ -  `new MerkleHash()` constructor became to throw `TypeError` instead of
+    `Error` if its second argument is a wrong type.
  -  `MerkleHash#equals()` method became to return `false` instead of throwing
     `TypeError` if its operand is not a `MerkleHash` instance.
 

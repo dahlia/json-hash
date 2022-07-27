@@ -61,6 +61,11 @@ Deno.test("new MerkleHash()", () => {
     new MerkleHash("SHA-256", new Uint8Array(randomBytes)),
     new MerkleHash("SHA3-256", new Uint8Array(randomBytes)),
   );
+
+  assertThrows<TypeError>(() => new MerkleHash("SHA-1", null!));
+  assertThrows<TypeError>(
+    () => new MerkleHash("SHA-1", {} as unknown as number[]),
+  );
 });
 
 Deno.test("MerkleHash.deriveFrom()", async () => {

@@ -57,7 +57,7 @@ export class MerkleHash<T extends DigestAlgorithmType> {
     } else if (hashBuffer instanceof Uint8Array || Array.isArray(hashBuffer)) {
       this.#hashBuffer = new Uint8Array(hashBuffer);
     } else {
-      throw new Error(`Unexpected type: ${typeof hashBuffer}.`);
+      throw new TypeError(`Unexpected type: ${typeof hashBuffer}.`);
     }
     this.algorithm = algorithm;
   }
