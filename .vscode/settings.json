@@ -13,6 +13,18 @@
   "[typescript]": {
     "editor.defaultFormatter": "denoland.vscode-deno"
   },
+  "omnisharp.autoStart": false,
+  "cSpell.allowedSchemas": [
+    "file",
+    "untitled"
+  ],
+  "cSpell.ignorePaths": [
+    ".git",
+    ".vscode",
+    ".vscode-insiders",
+    "hooks/bin",
+    "jcs_spec"
+  ],
   "cSpell.words": [
     "canonicalization",
     "canonicalize",
