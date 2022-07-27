@@ -1,10 +1,25 @@
 {
   "deno.enable": true,
   "deno.lint": true,
+  "deno.suggest.imports.autoDiscover": true,
+  "deno.suggest.imports.hosts": {
+    "https://deno.land": true,
+    "https://x.nest.land": true,
+    "https://crux.land": true
+  },
   "deno.unstable": false,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "[typescript]": {
-    "editor.defaultFormatter": "denoland.vscode-deno",
+    "editor.defaultFormatter": "denoland.vscode-deno"
   },
+  "cSpell.words": [
+    "canonicalization",
+    "canonicalize",
+    "canonicalized",
+    "deno",
+    "façade",
+    "merkle",
+    "runtimes"
+  ]
 }

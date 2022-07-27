@@ -1,5 +1,8 @@
 {
   "recommendations": [
     "denoland.vscode-deno",
+    "editorconfig.editorconfig",
+    "timonwong.shellcheck",
+    "streetsidesoftware.code-spell-checker"
   ],
 }

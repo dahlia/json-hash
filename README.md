@@ -8,8 +8,8 @@ JSON Hash
 [![Deno Doc (API references)][Deno Doc badge]][Deno Doc]
 [![GitHub Actions][GitHub Actions status badge]][GitHub Actions]
 
-This [Deno][][^1] package contains several utilties to deal JSON data with
-cryoptography.  See the below sections for details.
+This [Deno][][^1] package contains several utilities to deal JSON data with
+cryptography.  See the below sections for details.
 
 [^1]: It is open to expand its target runtimes including [web browsers in
       particular][1].
@@ -111,7 +111,7 @@ If you need to track changes of large JSON trees this module could help you.
 It provides `merkle()` function and `MerkleHash<T>` class which enables you to
 build [Merkle tree]s.
 
-Unlikes `digest()` function from *digest.ts* module, `merkle()` function doesn't
+Unlike `digest()` function from *digest.ts* module, `merkle()` function doesn't
 digest the entire JSON data at once, but digests each small entity of the tree
 and digests them recursively.  For example:
 
