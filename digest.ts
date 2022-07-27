@@ -7,7 +7,7 @@
  * std/crypto module.
  * @license LGPL-3.0-or-later
  */
-import { crypto, DigestAlgorithmType } from "./crypto.ts";
+import { crypto, type DigestAlgorithmType } from "./crypto.ts";
 import { canonicalize, Tree } from "./canon.ts";
 
 /**
