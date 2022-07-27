@@ -20,7 +20,7 @@ export function toHex(bytes: Uint8Array): string {
  * Turns a hexadecimal string into a {@link Uint8Array}.
  * @param hex The hexadecimal string to convert.  It is case-insensitive.
  * @returns The bytes.
- * @throws {@link RangeError} if the string is not a valid hexadecimal string.
+ * @throws {RangeError} Thrown if the string is not a valid hexadecimal string.
  */
 export function fromHex(hex: string): Uint8Array {
   if (hex.length % 2 !== 0) {
