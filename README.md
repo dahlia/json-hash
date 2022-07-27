@@ -7,6 +7,7 @@ JSON Hash
 [![LGPL 3.0][License badge]](./LICENSE)
 [![Deno Doc (API references)][Deno Doc badge]][Deno Doc]
 [![GitHub Actions][GitHub Actions status badge]][GitHub Actions]
+[![Codecov][Codecov badge]][Codecov]
 
 This [Deno][][^1] package contains several utilities to deal JSON data with
 cryptography.  See the below sections for details.
@@ -21,6 +22,8 @@ cryptography.  See the below sections for details.
 [Deno Doc badge]: https://img.shields.io/badge/api-deno%20doc-blue
 [GitHub Actions]: https://github.com/dahlia/json-hash/actions/workflows/test.yaml
 [GitHub Actions status badge]: https://github.com/dahlia/json-hash/actions/workflows/test.yaml/badge.svg
+[Codecov badge]: https://codecov.io/gh/dahlia/json-hash/branch/main/graph/badge.svg?token=rCNDUvONJv
+[Codecov]: https://codecov.io/gh/dahlia/json-hash
 [Deno]: https://deno.land/
 [1]: https://github.com/dahlia/json-hash/issues/2
 

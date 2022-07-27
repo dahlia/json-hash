@@ -16,6 +16,11 @@ jobs:
           --allow-read=jcs_spec/testdata/
           --doc
           --ignore=jcs_spec/
+          --coverage=.cov
+      - run: deno coverage --lcov .cov > .cov.lcov
+      - uses: codecov/codecov-action@v2
+        with:
+          files: .cov.lcov
   lint:
     runs-on: ubuntu-20.04
     steps:
