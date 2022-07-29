@@ -6,7 +6,7 @@ JSON Hash Changelog
 Version 0.2.0
 -------------
 
-To be released.
+Released on July 29, 2022.
 
  -  Added `MerkleHash#compareTo()` method.  [[#4]]
  -  `new MerkleHash()` constructor became to throw `TypeError` instead of
