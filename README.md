@@ -140,7 +140,7 @@ const d: MerkleHash<"BLAKE3"> = await merkle(
 );
 assert(c.equals(d));
 
-const e = await merkle(c);
+const e = await merkle("BLAKE3", c);
 assert(e.equals(c));
 ~~~
 
